@@ -1,0 +1,95 @@
+<div id="sb-site">
+    <div class="container">
+        <div id="bisma" class="row">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Tìm kiếm...">
+                    <span class="input-group-btn">
+                        <button class="btn btn-info" type="button">Go!</button>
+                    </span>
+            </div>
+            <div class="btn-group btn-group-justified" role="group" aria-label="...">
+                <div class="btn-group" role="group">
+                    <button type="button" class="btn btn-success">Mới Nhất</button>
+                </div>
+                <div class="btn-group" role="group">
+                    <button type="button" class="btn btn-danger">Đang Hot</button>
+                </div>
+                <div class="btn-group" role="group">
+                    <button type="button" class="btn btn-primary">Nên Đọc</button>
+                </div>
+            </div>
+        
+            <div class="all-chapters-list">
+                <h2>Truyện Mới Nhất</h2>
+                    <ul class="list-group">
+                        <% @books.each do |book| %>
+                            <li class="list-group-item">
+                                <div class="view-category-item">
+                                    <div class="pull-left view-category-item-image">
+                                        <%= link_to(image_tag(book.image.url, :alt => "Đại Thư Viện", :title => book.name, :width => '100%'),truyen_path(book.slug)) %>
+                                    </div>
+                                    <div class="view-category-item-infor ">
+                                        <%= link_to raw("<h3 class=\"view-category-item-title\">"+truncate(book.name,length: 20)+"</h3>"), truyen_path(book.slug)%>
+                        
+                                        <p class="view-category-item-author">
+                                            <%= link_to book.author.author_name, tac_gia_path(book.author.slug), class:'btn btn-success btn-xs' %>
+                                        </p>   
+                                        <p class="view-category-item-category">
+                                            <%= link_to book.subcategory.name, danh_muc_path(book.subcategory.slug), class:'btn btn-primary btn-xs' %>
+                                        </p>   
+                                    </div>
+                                </div>
+                            </li>
+                        <% end %>
+                    </ul>   
+                    <div class="col-md-12 text-center">
+                        <div class="row">
+                            <%= will_paginate @books, renderer: BootstrapPagination::Rails, page_links: false %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,60 @@
+<div id="nav">
+  <div class="container">
+    <div id="row">
+      <div class="col-lg-8 col-md-8">
+        <ul id="menu" class="menu">
+            <li id="menu-item-20" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-20">
+                <a class="home" title="Home" href="http://daithuvien.com">
+                    <i class="glyphicon glyphicon-home"></i>
+                </a>
+            </li>
+            <% @categories.each do |category| %>
+                <% if category.subcategories.count > 5 %>
+                    <li id="menu-item-21" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-21">
+                    <h3><a><%= category.name %></a></h3>
+                        <ul class="sub-menu">
+                            <% category.subcategories.each do |subcate| %>
+                                <li id="menu-item-1" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1">
+                                    <h3>
+                                    <%= link_to subcate.name, danh_muc_path(subcate.slug) %>
+                                    </h3>
+                                </li>
+                            <% end %>
+                        </ul>
+                    </li>
+                <% else %>
+                    <li id="menu-item-35" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-35">
+                    <h3><a><%= category.name %></a></h3>
+                        <ul class="sub-menu">
+                            <% category.subcategories.each do |subcate| %>
+                                <li id="menu-item-1" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1">
+                                    <h3><a href="#" title="<%= subcate.name %>"><%= subcate.name %></a></h3>
+                                </li>
+                            <% end %>
+                        </ul>
+                    </li>
+                <% end %>
+            <% end %>
+        </ul>
+      </div>
+      <div class="col-lg-4 col-md-4">
+        <%= form_tag(tim_kiem_path, :method => "get", id: "search") do %>
+                <i class="glyphicon glyphicon-search"></i>
+                <%= button_tag(type: "submit", class: "btn btn-primary", name: "") do %>
+                    <i></i>
+                <% end %>
+                <span><%= text_field_tag :search, params[:search], placeholder: "Tìm kiếm" %></span>
+                
+                
+        <% end %> 
+        
+        <!--<form id="search" method="get" action="http://thuthuatviet.vn/search">
+                <i class="glyphicon glyphicon-search"></i>
+                <button type="submit"><i></i></button>
+                <span><input type="text" name="q" placeholder="Tìm kiếm..." value=""></span>
+            </form>            -->
+      </div>
+      
+    </div>
+  </div>
+</div>

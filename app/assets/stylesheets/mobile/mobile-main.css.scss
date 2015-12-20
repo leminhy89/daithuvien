@@ -1,0 +1,231 @@
+html, body {
+	//background-color: #222222;
+	background-color: #f2f2f2;
+}
+
+a, a:active, a:hover, a:focus {
+	text-decoration: none;
+	outline: none
+}
+
+#sb-site {
+	box-shadow: 0 0 30px 10px rgba(0, 0, 0, 0.3); /* Shadow cast onto the slidebars when opened. */
+	padding: 50px 0 30px 0;
+}
+
+.navbar {
+	box-shadow: /* Shadow beneath the bar and edge highlights. */
+		/* Layered single pixel shadows to create a one sided shadow effect. */
+		0 5px 0 0 rgba(0, 0, 0, 0.01),
+		0 4px 0 0 rgba(0, 0, 0, 0.02),
+		0 3px 0 0 rgba(0, 0, 0, 0.04),
+		0 2px 0 0 rgba(0, 0, 0, 0.06),
+		0 1px 0 0 rgba(0, 0, 0, 0.08),
+		/* Top highlight */
+		0 1px 0 0 rgba(255, 255, 255, 0.1) inset,
+		/* Left highlight */
+		1px 0 0 0 rgba(255, 255, 255, 0.1) inset,
+		/* Right highlight */
+		-1px 0 0 0 rgba(255, 255, 255, 0.1) inset,
+		/* Bottom lowlight */
+		0 -1px 0 0 rgba(0, 0, 0, 0.1) inset;
+		
+	/* Glass gradient overlay. */
+	background-image: -webkit-linear-gradient(top, rgba(255,255,255, 0.05) 50%, rgba(0,0,0, 0.02) 51%); /*  Webkit syntax. */
+	background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 50%, rgba(0, 0, 0, 0.02) 51%); /* Final syntax. */
+	background-size: 100%;
+	background-repeat: no-repeat;
+	
+	/* Bootstrap Changes */
+	border: none;
+	width: 100%;
+	height: 9%;
+	left: auto;
+	right: auto;
+}
+
+.navbar-default {
+    //background-color: #ff3971;
+    background-color: #1b5e6e;
+    border-color: #ff1859;
+}
+
+.navicon-line {
+    width: 70px;
+    height: 10px;
+    border-radius: 1px;
+    margin-bottom: 13px;
+    background-color: #fff;
+}
+
+.searchimg {
+    float: right;
+    padding-top: 10px;
+	padding-right: 25px ;
+}
+
+.navbar .sb-toggle-left {
+	width: 58px;
+	float: left;
+	padding: 35px ;
+}
+.sb-toggle-left, .sb-toggle-right, .sb-open-left, .sb-open-right, .sb-close {
+	cursor: pointer;
+}
+
+#logo {
+	
+	margin-top: 2%;
+	text-align: center !important;
+	padding-left:29%;
+}
+
+
+.nav-stacked {
+    width: 100%;
+}
+
+.nav-pills>li {
+    height: 150px !important;
+}
+
+.nav-pills>li>a {
+    height: 130px !important;
+    font-size: 50px;
+    padding: 30px;
+    color: #fff;
+    border-bottom: 1px solid #fff;
+}
+
+.nav-pills>li .submenu {
+    padding-left: 40px;
+}
+
+.sb-slidebar {
+    width: 70% !important;
+}
+
+#bisma {
+    margin: 160px 0;
+    width: 100%;
+}
+
+.btn-group-justified {
+    height: 20%;
+}
+
+
+.btn-group>.btn {
+    height: 100px;
+    font-size: 40px;
+}
+
+.all-chapters-list {
+	margin-top: 40px;	
+}
+
+.all-chapters-list h2 {
+    font-size: 60px;
+}
+
+#bisma .input-group {
+    margin: auto;
+    width: 90%;
+}
+
+#bisma .input-group .form-control, #bisma .input-group .btn {
+    height: 120px !important;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    font-size: 50px;
+}
+
+#bisma .input-group .btn {
+    width: 150px;
+}
+
+.view-category-item {
+	margin-top: 10px;
+	position: relative;
+}
+
+.view-bookmark-item-title {
+	line-height: 30px;
+}
+.view-bookmark-item-title a {
+	font-size: 16px;
+}
+
+.view-category-item-image img {
+    width: 176px;
+    height: 270px;
+}
+
+.list-group-item {
+    height: 330px;
+}
+
+.view-category-item-infor {
+	max-width: 74%;
+	float: left;
+	margin-left: 2%;
+	text-align: justify
+}
+
+
+.view-category-item .view-category-item-infor .view-category-item-title {
+	font-size: 60px;
+	/* color: #2489ce !important;  */
+	color: #1b5e6e !important;
+	font-style: bold !important;
+	margin-top: 0;
+}
+
+.view-category-item, .view-category-item-infor, .view-category-item-author a, .view-category-item-category a{
+	font-size: 40px;
+	margin: 15px;
+}
+
+.category #tab-content .view-category-item .view-category-item-infor .view-category-item-sum {
+	font-family: "RobotoMedium";
+	color: #656565;
+}
+
+.category #tab-content .view-category-item .view-category-item-infor .view-category-item-sum span {
+	color: #cf0e0e;
+}
+
+#static-pagination {
+  position: fixed;
+  top: 30px;
+  opacity: 0.7;
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.btn .btn-success .btn-xs {
+    text-align: left !important;
+}
+
+.pagination li {
+    font-size: 60px;
+}
+
+#down_footer {    
+	background: #1b5e6e;
+	color:#fff;
+	text-align: center;
+	padding-top: 20px;
+	height: 120px;
+	font-size: 40px;
+	margin-top: 30px;
+}
+
+#down_footer p {
+	color: #fff;
+}
+
+.view-category-item-title h3 {
+    font-size: 15px;
+}

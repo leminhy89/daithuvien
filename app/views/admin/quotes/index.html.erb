@@ -1,0 +1,30 @@
+<%= render 'partials/messages' %>
+<h2 class="page-header">Quản Lý Trích Dẫn <%= link_to "Thêm Mới", new_admin_quote_path, class:'btn btn-success pull-right' %></h2>
+<% if @quotes.exists? %>
+    <table class="table table-stripe">
+        <tr>
+            <th>Từ Sách</th>
+            <th>Người Trích</th>
+            <th>Nội Dung</th>
+            <th>Ngày Tạo</th>
+            <th>Người Tạo</th>
+            <th>Ngày Cập Nhật</th>
+            <th>Người Cập Nhật</th>
+            <th>Action</th>
+        </tr>
+        <% @quotes.each do |quote| %>
+            <tr>
+                <td><%= quote.quote_from %></td>
+                <td><%= quote.quote_at %></td>
+                <td><%= quote.quote_text %></td>
+                <td><%= quote.created_at.to_time.strftime('%B %e at %l:%M %p')%></td>
+                <td><%= quote.created_by %></td>
+                <td><%= time_ago_in_words(quote.updated_at) %> trước</td>
+                <td><%= quote.updated_by %></td>
+                <td><%= link_to "Edit", edit_admin_quote_path(quote), class:'btn btn-primary' %> <%= link_to "Delete", admin_quote_path(quote), class:'btn btn-danger', method: :delete, data: {confirm: 'Bạn có muốn xóa Trích Dẫn này không ?'} %></td>
+            </tr>
+        <% end %>
+    </table>
+<% else %>
+<p> Chưa có Trích Dẫn nào được tạo </p>
+<% end %>

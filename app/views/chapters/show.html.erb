@@ -1,0 +1,32 @@
+<%= render 'partials/menu', :locals => { :categories => @categories, :subcategories => @subcategories} %>
+<section id="content-wrapper">
+      <div class="container">
+        <div class="content-home-wrapper col-sm-12 col-md-12">
+          <div class="main-breadcrumb">
+            <h5><a href="http://daithuvien.com">Trang chủ</a> &gt; <%= link_to @book.subcategory.name, danh_muc_path(@book.subcategory.slug) %> &gt; <%= link_to @book.name, truyen_path(@book.slug) %> &gt; <%= link_to @chapter.name, chuong_truyen_path(@book.slug,@chapter.slug) %></h5>
+            
+          </div>          
+          <div class="chapter-detail">      
+          <h1 class="chapter-detail-title text-center"><%= @chapter.name %></h1>   
+          <hr class="start-chap">
+          <div class="chapter-detail-content">
+            <%= raw "<p>"+ @chapter.content + "</p>" %>
+          </div>
+          <h1 class="chapter-detail-title text-center"><%= @chapter.name %></h1>   
+          <hr class="end-chap">    
+          <div class="chapter-detail-footer">
+            <div class="next-previous pull-left">
+                <% if @previousChapter != nil %>
+                    <%= link_to raw("<i class=\"glyphicon glyphicon-menu-left\"></i><i class=\"glyphicon glyphicon-menu-left\"></i>Chương trước"), chuong_truyen_path(@previousChapter.book.slug,@previousChapter.slug), class:'btn btn-primary pull-left' %>   
+                <% end %>
+                
+                <% if @nextChapter != nil %>
+                    <%= link_to raw("Chương tiếp <i class=\"glyphicon glyphicon-menu-right\"></i><i class=\"glyphicon glyphicon-menu-right\"></i>"), chuong_truyen_path(@nextChapter.book.slug,@nextChapter.slug), class:'btn btn-primary pull-right' %>   
+                    
+                <% end %>
+            </div>
+          </div>
+        
+             
+        </div>
+    </section>

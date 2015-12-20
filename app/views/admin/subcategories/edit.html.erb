@@ -1,0 +1,17 @@
+<h2> Cập Nhật Danh Mục Con</h2>
+
+<%= form_for [:admin, @subCate] do |f| %>
+    <!-- Check for errors -->
+    <%= render 'partials/errors', obj: @subCate %>
+    
+    <div class="form-group">
+         <label for="name">Tên Danh Mục Con: </label>
+        <%= f.text_field :name, class:'form-control' %>
+    </div>
+    <div class="form-group">
+         <label for="category_id">Danh Mục Cha: </label>
+        <%= f.select :category_id, Category.where(delete_flag: 0).all.collect {|x| [x.name, x.id]}, {:include_blank => '- Chọn danh mục Cha -'}, class:'form-control' %>
+    </div>
+    <%= f.submit "Cập Nhật", class:'btn btn-primary' %>
+    <%= link_to "Hủy", admin_subcategories_path, class:'btn btn-default' %>
+<% end %>

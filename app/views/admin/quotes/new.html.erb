@@ -1,0 +1,21 @@
+<h2> Thêm Mới Trích Dẫn</h2>
+
+<%= form_for [:admin, @quote] do |f| %>
+    <!-- Check for errors -->
+    <%= render 'partials/errors', obj: @quote %>
+    
+    <div class="form-group">
+         <label for="quote_from">Trích Dẫn từ Sách: </label>
+        <%= f.text_field :quote_from, class:'form-control' %>
+    </div>
+    <div class="form-group">
+         <label for="quote_at">Trích Dẫn của: </label>
+        <%= f.text_field :quote_at, class:'form-control' %>
+    </div>
+    <div class="form-group">
+         <label for="quote_text">Nội Dung: </label>
+        <%= f.text_area :quote_text, class:'form-control' %>
+    </div>
+    <%= f.submit "Tạo Mới", class:'btn btn-primary' %>
+    <%= link_to "Hủy", admin_quotes_path, class:'btn btn-default' %>
+<% end %>

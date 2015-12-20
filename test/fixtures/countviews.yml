@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  book_id: 1
+  count_num: 1
+  delete_flag: false
+
+two:
+  book_id: 1
+  count_num: 1
+  delete_flag: false

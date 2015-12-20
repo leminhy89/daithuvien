@@ -1,0 +1,26 @@
+<%= render 'partials/messages' %>
+<h2 class="page-header">Quản Lý Danh Mục <%= link_to "Thêm Mới", new_admin_category_path, class:'btn btn-success pull-right' %></h2>
+<% if @cates.exists? %>
+    <table class="table table-stripe">
+        <tr>
+            <th>Tên Danh Mục</th>
+            <th>Ngày Tạo</th>
+            <th>Người Tạo</th>
+            <th>Ngày Cập Nhật</th>
+            <th>Người Cập Nhật</th>
+            <th>Action</th>
+        </tr>
+        <% @cates.each do |cate| %>
+            <tr>
+                <td><%= link_to cate.name, admin_subcategory_path(cate) %></td>
+                <td><%= cate.created_at.to_time.strftime('%B %e at %l:%M %p')%></td>
+                <td><%= cate.created_by %></td>
+                <td><%= time_ago_in_words(cate.updated_at) %> trước</td>
+                <td><%= cate.updated_by %></td>
+                <td><%= link_to "Edit", edit_admin_category_path(cate), class:'btn btn-primary' %> <%= link_to "Delete", admin_category_path(cate), class:'btn btn-danger', method: :delete, data: {confirm: 'Bạn có muốn xóa Danh Mục này không ?'} %></td>
+            </tr>
+        <% end %>
+    </table>
+<% else %>
+<p> Chưa có Danh Mục nào được tạo </p>
+<% end %>

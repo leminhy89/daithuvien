@@ -1,0 +1,26 @@
+<%= render 'partials/messages' %>
+<h2 class="page-header">Quản Lý Trạng Thái <%= link_to "Thêm Mới", new_admin_status_path, class:'btn btn-success pull-right' %></h2>
+<% if @statuses.exists? %>
+    <table class="table table-stripe">
+        <tr>
+            <th>Tên Trạng Thái</th>
+            <th>Ngày Tạo</th>
+            <th>Người Tạo</th>
+            <th>Ngày Cập Nhật</th>
+            <th>Người Cập Nhật</th>
+            <th>Action</th>
+        </tr>
+        <% @statuses.each do |status| %>
+            <tr>
+                <td><%= status.name %></td>
+                <td><%= status.created_at.to_time.strftime('%B %e at %l:%M %p')%></td>
+                <td><%= status.created_by %></td>
+                <td><%= time_ago_in_words(status.updated_at) %> trước</td>
+                <td><%= status.updated_by %></td>
+                <td><%= link_to "Edit", edit_admin_status_path(status), class:'btn btn-primary' %> <%= link_to "Delete", admin_status_path(status), class:'btn btn-danger', method: :delete, data: {confirm: 'Bạn có muốn xóa trạng thái này không ?'} %></td>
+            </tr>
+        <% end %>
+    </table>
+<% else %>
+<p> Chưa có trạng thái nào được tạo </p>
+<% end %>

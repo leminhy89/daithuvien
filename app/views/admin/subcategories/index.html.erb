@@ -1,0 +1,35 @@
+<%= render 'partials/messages' %>
+<h2 class="page-header">
+    <% if @category.present? %> 
+        Danh Mục -  &quot; <%= @category.name %> &quot;
+    <% else %>
+        Quản Lý Danh Mục Con
+    <% end %>
+    <%= link_to "Thêm Mới", new_admin_subcategory_path, class:'btn btn-success pull-right' %>
+</h2>
+<% if @subCates.exists? %>
+    <table class="table table-stripe">
+        <tr>
+            <th>Tên Danh Mục Con</th>
+            <th>Tên Danh Mục Cha</th>
+            <th>Ngày Tạo</th>
+            <th>Người Tạo</th>
+            <th>Ngày Cập Nhật</th>
+            <th>Người Cập Nhật</th>
+            <th>Action</th>
+        </tr>
+        <% @subCates.each do |subcate| %>
+            <tr>
+                <td><%= subcate.name %></td>
+                <td><%= subcate.category.name %></td>
+                <td><%= subcate.created_at.to_time.strftime('%B %e at %l:%M %p')%></td>
+                <td><%= subcate.created_by %></td>
+                <td><%= time_ago_in_words(subcate.updated_at) %> trước</td>
+                <td><%= subcate.updated_by %></td>
+                <td><%= link_to "Edit", edit_admin_subcategory_path(subcate), class:'btn btn-primary' %> <%= link_to "Delete", admin_subcategory_path(subcate), class:'btn btn-danger', method: :delete, data: {confirm: 'Bạn có muốn xóa Danh Mục này không ?'} %></td>
+            </tr>
+        <% end %>
+    </table>
+<% else %>
+<p> Chưa có Danh Mục nào được tạo </p>
+<% end %>

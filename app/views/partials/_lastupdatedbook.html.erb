@@ -1,0 +1,33 @@
+<div id="content-home" class="content-inner">
+    <div id="slider_filter" class="hidden-xs"> 
+        <div class="box_slider">
+            <% @lastUpdatedbook.each_with_index  do |book, index| %>
+                <% if index % 2 == 0 %>
+                    <div class="box_item odd">
+                <% else %>
+                    <div class="box_item even">
+                <% end %>
+                        <div class="box_info">
+                            <div class="title">
+                                <%= link_to book.name, truyen_path(book.slug) %>
+                            </div>
+                            <div class="author"> 
+                                Tác giả: <%= link_to book.author.author_name,tac_gia_path(book.author.slug) %>
+                            </div>
+                            <div class="category"> Thể loại:
+                                <%= link_to book.subcategory.name, danh_muc_path(book.subcategory.slug) %>
+                            </div>
+                            <div>
+                                <%= link_to "Đọc ngay", truyen_path(book.slug), class:'btn btn-default btn_read_now' %>
+                            </div>
+                        </div>
+                        <div class="box_avatar">
+                            <div class="avatar">
+                                <%= link_to(image_tag(book.image.url, :alt => "logo", :title => book.name, :width => '100%'),truyen_path(book.slug)) %>
+                          </div>
+                        </div>
+                    </div>
+            <% end %>
+        </div>
+    </div>
+</div>

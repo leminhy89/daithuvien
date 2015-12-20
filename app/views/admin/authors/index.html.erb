@@ -1,0 +1,36 @@
+<%= render 'partials/messages' %>
+<h2 class="page-header">Quản Lý Tác Giả <%= link_to "Thêm Mới", new_admin_author_path, class:'btn btn-success pull-right' %></h2>
+<div class="container">
+        <div class="row">
+            <%= form_tag(admin_authors_path, :method => "get", id: "search-form", class: "search-form") do %>
+                <div class="form-group">
+                    <%= text_field_tag :search, params[:search], placeholder: "Search Authors" %>
+                    <%= submit_tag "Search", :name => nil, class:"btn btn-primary" %>
+                </div>
+            <% end %>
+        </div>
+    </div>
+<% if @authors.exists? %>
+    <table class="table table-stripe">
+        <tr>
+            <th>Tên Tác Giả</th>
+            <th>Ngày Tạo</th>
+            <th>Người Tạo</th>
+            <th>Ngày Cập Nhật</th>
+            <th>Người Cập Nhật</th>
+            <th>Action</th>
+        </tr>
+        <% @authors.each do |author| %>
+            <tr>
+                <td><%= author.author_name %></td>
+                <td><%= author.created_at.to_time.strftime('%B %e at %l:%M %p')%></td>
+                <td><%= author.created_by %></td>
+                <td><%= time_ago_in_words(author.updated_at) %> trước</td>
+                <td><%= author.updated_by %></td>
+                <td><%= link_to "Edit", edit_admin_author_path(author), class:'btn btn-primary' %> <%= link_to "Delete", admin_author_path(author), class:'btn btn-danger', method: :delete, data: {confirm: 'Bạn có muốn xóa Tác Giả này không ?'} %></td>
+            </tr>
+        <% end %>
+    </table>
+<% else %>
+<p> Chưa có Tác Giả nào được tạo </p>
+<% end %>

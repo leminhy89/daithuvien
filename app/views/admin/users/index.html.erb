@@ -1,0 +1,23 @@
+<%= render 'partials/messages' %>
+<h2 class="page-header">Quản Lý Tài Khoản <%= link_to "Thêm Mới", new_admin_user_path, class:'btn btn-success pull-right' %></h2>
+
+<% if @users.exists? %>
+    <table class="table table-stripe">
+        <tr>
+            <th>Tên tài khoản</th>
+            <th>Email</th>
+            <th>Ngày Tạo</th>
+            <th>Action</th>
+        </tr>
+        <% @users.each do |user| %>
+            <tr>
+                <td><%= user.user_name %></td>
+                <td><%= user.email %></td>
+                <td><%= user.created_at.to_time.strftime('%B %e at %l:%M %p')%></td>
+                <td><%= link_to "Edit", edit_admin_user_path(user), class:'btn btn-primary' %> <%= link_to "Delete", admin_user_path(user), class:'btn btn-danger', method: :delete, data: {confirm: 'Bạn có muốn xóa tài khoản này không ?'} %></td>
+            </tr>
+        <% end %>
+    </table>
+<% else %>
+<p> Chưa có tài khoản nào được tạo </p>
+<% end %>

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  quote_test: MyString
+  created_by: MyString
+  updated_by: MyString
+  delete_flag: false
+
+two:
+  quote_test: MyString
+  created_by: MyString
+  updated_by: MyString
+  delete_flag: false

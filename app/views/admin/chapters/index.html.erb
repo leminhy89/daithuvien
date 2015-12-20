@@ -1,0 +1,32 @@
+<%= render 'partials/messages' %>
+<h2 class="page-header">Quản Lý Chương Sách <%= link_to "Thêm Mới", new_admin_book_chapter_path, class:'btn btn-success pull-right' %>  <%= link_to "Add Excel", admin_add_chuong_path(@book.slug), class:'btn btn-success pull-right' %></h2>
+<% if @chapters.exists? %>
+    <%= will_paginate @chapters, renderer: BootstrapPagination::Rails %>
+    <table class="table table-stripe">
+        <tr>
+            <th>STT</th>
+            <th>Tên Sách</th>
+            <th>Tên Chương</th>
+            <th>Ngày Tạo</th>
+            <th>Người Tạo</th>
+            <th>Ngày Cập Nhật</th>
+            <th>Người Cập Nhật</th>
+            <th>Action</th>
+        </tr>
+        <% @chapters.each_with_index do |chapter, index| %>
+            <tr>
+                <td><%= index+1 %></td>
+                <td><%= chapter.book.name %></td>
+                <td><%= chapter.name %></td>
+                <td><%= chapter.created_at.to_time.strftime('%B %e at %l:%M %p')%></td>
+                <td><%= chapter.created_by %></td>
+                <td><%= time_ago_in_words(chapter.updated_at) %> trước</td>
+                <td><%= chapter.updated_by %></td>
+                <td><%= link_to "Edit", edit_admin_book_chapter_path(@book,chapter), class:'btn btn-primary' %> <%= link_to "Delete", admin_book_chapter_path(chapter.book, chapter), class:'btn btn-danger', method: :delete, data: {confirm: 'Bạn có muốn xóa Chương Sách này không ?'} %></td>
+            </tr>
+        <% end %>
+    </table>
+    <%= will_paginate @chapters, renderer: BootstrapPagination::Rails %>
+<% else %>
+<p> Chưa có Chương Sách nào được tạo </p>
+<% end %>

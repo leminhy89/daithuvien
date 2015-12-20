@@ -1,0 +1,50 @@
+<%= render 'partials/menu', :locals => { :categories => @categories, :subcategories => @subcategories} %>
+<%= render 'partials/quote' %>
+    
+    
+<section id="content-wrapper">
+    <div class="container">
+        <div class="content-home-wrapper col-sm-8 col-md-9">
+            <div class="main-breadcrumb">
+                <h5><%= link_to "Trang chủ", root_path %> &gt; <%= link_to @author.author_name, tac_gia_path(@author) %> </h5>
+            </div>
+          
+            <div id="content-home" class="content-inner">            
+                <h1 class="page-title"><%= @author.author_name %></h1>
+                <% @books.each do |book| %>
+                    <div class="view-category-item">
+                        <div class="pull-left view-category-item-image">
+                            <%= link_to(image_tag(book.image.url, :alt => "Đại Thư Viện", :title => book.name, :width => '100%'),truyen_path(book.slug)) %>
+                        </div>
+                        <div class="view-category-item-infor ">
+                            <%= link_to raw("<h3 class=\"view-category-item-title\">"+book.name+"</h3>"), truyen_path(book.slug)%>
+                        
+                            <p class="view-category-item-author">
+                                Thể Loại: <%= link_to book.subcategory.name, danh_muc_path(book.subcategory.slug), class:'btn btn-success btn-xs' %>
+                            </p>   
+                            <p class="view-category-item-des hidden-xs">
+                                <%= raw book.description %>
+                            </p>
+                            <br/>
+                            <p><span class="btn btn-info btn-xs"><%= book.chapters.size %></span> chương - 
+                            <!--Lượt đọc: <span class="btn btn-primary btn-xs">1581</span></p>-->
+                            <p>Trạng Thái: <span class="btn btn-danger btn-sm"> <%= book.status.name %></span></p>
+                        </div>
+                    </div>
+                <% end %>
+            
+            <div class="col-md-12 text-center">
+                <nav>
+                  <%= will_paginate @books, renderer: BootstrapPagination::Rails %>
+                </nav>
+              </div>
+          </div>        
+            
+        </div>
+        <div class="col-sm-4 col-md-3 right-content col-xs-12">
+            <%= render 'partials/notification' %>
+            <%= render 'partials/popularbook' %>
+            <%= render 'partials/likepage' %>
+        </div>        
+  </div>
+</section>

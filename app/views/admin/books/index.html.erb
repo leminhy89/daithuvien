@@ -1,0 +1,54 @@
+<%= render 'partials/messages' %>
+<h2 class="page-header">Quản Lý Sách <%= link_to "Thêm Mới", new_admin_book_path, class:'btn btn-success pull-right' %></h2>
+<% if @books.exists? %>
+    <div class="container">
+        <div class="row">
+            <%= form_tag(admin_books_path, :method => "get", id: "search-form", class: "search-form") do %>
+                <div class="form-group">
+                    <%= text_field_tag :search, params[:search], placeholder: "Search Books" %>
+                    <%= submit_tag "Search", :name => nil, class:"btn btn-primary" %>
+                </div>
+            <% end %>
+        </div>
+    </div>
+    <%= will_paginate @books, renderer: BootstrapPagination::Rails %>
+    <table class="table table-stripe">
+        <tr>
+            <th>STT</th>
+            <th>Hình Ảnh</th>
+            <th>Tên Sách</th>
+            <th>Thể Loại</th>
+            <th>Tác Giả</th>
+            <th>Kiểu</th>
+            <th>Trạng Thái</th>
+            <th>Ngày Tạo</th>
+            <th>Người Tạo</th>
+            <th>Ngày Cập Nhật</th>
+            <th>Người Cập Nhật</th>
+            <th>Action</th>
+        </tr>
+        <% @books.each_with_index do |book, index| %>
+            <tr>
+                <td><%= index+1 %></td>
+                <% if book.image.exists? %>
+                <td>OK</td>
+                <% else %>
+                <td>nOK</td>
+                <% end %>
+                <td><%= link_to book.name, admin_book_chapters_path(book) %></td>
+                <td><%= book.subcategory.name %></td>
+                <td><%= book.author.author_name %></td>
+                <td><%= book.type.name %></td>
+                <td><%= book.status.name %></td>
+                <td><%= book.created_at.to_time.strftime('%B %e at %l:%M %p')%></td>
+                <td><%= book.created_by %></td>
+                <td><%= time_ago_in_words(book.updated_at) %> trước</td>
+                <td><%= book.updated_by %></td>
+                <td><%= link_to "Edit", edit_admin_book_path(book), class:'btn btn-primary' %> <%= link_to "Delete", admin_book_path(book), class:'btn btn-danger', method: :delete, data: {confirm: 'Bạn có muốn xóa Sách này không ?'} %></td>
+            </tr>
+        <% end %>
+    </table>
+    <%= will_paginate @books, renderer: BootstrapPagination::Rails %>
+<% else %>
+<p> Chưa có Sách nào được tạo </p>
+<% end %>

@@ -1,0 +1,95 @@
+<div id="nav">
+  <div class="container">
+    <div id="row">
+      <div class="col-lg-8 col-md-8">
+        <ul id="menu" class="menu">
+          <li id="menu-item-20" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-20">
+            <a class="home" title="Home" href="http://daithivien.com">
+              <i class="glyphicon glyphicon-home"></i>
+            </a>
+          </li>
+          <li id="menu-item-21" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-21">
+            <h3><a>Quản Lý Nội Dung</a></h3>
+            <ul class="sub-menu">
+              <li id="menu-item-1" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1">
+                <h3><%= link_to "Quản Lý Sách", admin_books_path %></h3>
+              </li>
+              <li id="menu-item-1" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1">
+                <h3><%= link_to "Quản Lý Danh Mục", admin_categories_path %></h3>
+              </li>
+              <li id="menu-item-1" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1">
+                <h3><%= link_to "Danh Mục Con", admin_subcategories_path %></h3>
+              </li>
+              <li id="menu-item-1" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1">
+                <h3><%= link_to "Tác Giả", admin_authors_path %></h3>
+              </li>
+              <li id="menu-item-1" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1">
+                <h3><%= link_to "Thể Loại", admin_types_path %></h3>
+              </li>
+              <li id="menu-item-1" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1">
+                <h3><%= link_to "Trạng Thái", admin_statuses_path %></h3>
+              </li>
+              <li id="menu-item-1" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1">
+                <h3><%= link_to "Trích Dẫn", admin_quotes_path %></h3>
+              </li>
+            </ul>
+          </li>              
+          <li id="menu-item-21" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-21">
+            <h3><%= link_to "Quản Lý Người Dùng", admin_users_path %></h3>
+            <!--<ul class="sub-menu">
+              <li id="menu-item-1" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1">
+                <h3><a href="#" title="Windows">Báo Chí</a></h3>
+              </li>
+              <li id="menu-item-1" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1">
+                <h3><a href="#" title="Windows">Triết Học</a></h3>
+              </li>
+              <li id="menu-item-1" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1">
+                <h3><a href="#" title="Windows">Công Nghệ Thông Tin</a></h3>
+              </li>
+              <li id="menu-item-1" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1">
+                <h3><a href="#" title="Windows">Khoa Học Tự Nhiên</a></h3>
+              </li>
+              <li id="menu-item-1" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1">
+                <h3><a href="#" title="Windows">Y Dược</a></h3>
+              </li>
+              <li id="menu-item-1" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1">
+                <h3><a href="#" title="Windows">Pháp Luật</a></h3>
+              </li>
+              <li id="menu-item-1" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1">
+                <h3><a href="#" title="Windows">Lịch Sử - Địa Lý</a></h3>
+              </li>
+              <li id="menu-item-1" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1">
+                <h3><a href="#" title="Windows">Phong Thủy</a></h3>
+              </li>
+              <li id="menu-item-1" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1">
+                <h3><a href="#" title="Windows">Chuyên Ngành Khác</a></h3>
+              </li>                  
+            </ul>-->
+          </li>
+          <!--<li id="menu-item-35" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-35">
+            <h3><a>Tôn Giáo</a></h3>
+            <ul class="sub-menu">
+              <li id="menu-item-2509" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2509">
+                <h3><a href="#" title="Phật Giáo">Phật Giáo</a></h3>
+              </li>
+              <li id="menu-item-2518" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2518">
+                <h3><a href="#" title="Thiên Chúa Giáo">Thiên Chúa Giáo</a></h3>
+              </li>
+              <li id="menu-item-2523" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2523">
+                <h3><a href="#" title="Hồi Giáo">Hồi Giáo</a></h3></li>
+              <li id="menu-item-2532" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2532">
+                <h3><a href="#" title="Tôn Giáo Khác">Tôn Giáo Khác</a></h3></li>
+            </ul>
+          </li>-->              
+        </ul>
+      </div>
+      <div class="col-lg-4 col-md-4">
+        <form id="search" method="get" action="http://thuthuatviet.vn/search">
+            <i class="glyphicon glyphicon-search"></i>
+            <button type="submit"><i></i></button>
+            <span><input type="text" name="q" placeholder="Tìm kiếm..." value=""></span>
+        </form>            
+      </div>
+    </div>
+  </div>
+</div>

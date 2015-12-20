@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  category_id: 1
+  type_id: 1
+  author_id: 1
+  status_id: 1
+  countview_id: 1
+  image: MyString
+  description: MyText
+  created_by: MyString
+  updated_by: MyString
+  delete_flag: false
+
+two:
+  name: MyString
+  category_id: 1
+  type_id: 1
+  author_id: 1
+  status_id: 1
+  countview_id: 1
+  image: MyString
+  description: MyText
+  created_by: MyString
+  updated_by: MyString
+  delete_flag: false

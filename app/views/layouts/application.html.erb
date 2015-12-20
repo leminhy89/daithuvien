@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!--<title>Đại Thư Viện | <%= @title %></title>-->
+  <title>Thư viện Truyện, Sách Online hay nhất 2015</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => false %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => false, async: true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+    <%= render 'partials/banner' %>
+    <%= yield %>
+    <%= render 'partials/footer' %>
+    
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '1501571353473883',
+          xfbml      : true,
+          version    : 'v2.4'
+        });
+      };
+
+      (function(d, s, id){
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement(s); js.id = id;
+         js.src = "https://connect.facebook.net/en_US/sdk.js";
+         fjs.parentNode.insertBefore(js, fjs);
+       }(document, 'script', 'facebook-jssdk'));
+    </script>
+</body>
+</html>

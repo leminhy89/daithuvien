@@ -1,0 +1,137 @@
+<%= render 'partials/menu', :locals => { :categories => @categories, :subcategories => @subcategories} %>
+<%= render 'partials/quote' %>
+    
+    
+<section id="content-wrapper">
+    <div class="container">
+        <div class="content-home-wrapper col-sm-8 col-md-9">
+            
+            <!--<%= render 'partials/lastupdatedbook', :locals => {:lastUpdatedbook => @lastUpdatedbook} %>-->
+
+            <div class="view-home hidden-xs">
+                <h3 class="view-title text-uppercase">
+                    <span><%= link_to @TienHiepbooks.first.subcategory.name, danh_muc_path(@TienHiepbooks.first.subcategory.slug) %></span>
+                </h3>
+                <div class="view-content">
+            <% @TienHiepbooks.each do |book| %>
+                <div class="view-story">
+                    <div class="view-story-img">
+                        <%= link_to(image_tag(book.image.url, :alt => book.name, :title => book.name, :width => '100%'),truyen_path(book.slug)) %>
+                    </div>
+                    <div class="view-story-title">
+                        <%= link_to book.name, truyen_path(book.slug) %>
+                    </div>
+                    <div class="view-story-author">
+                        <%= link_to book.author.author_name, tac_gia_path(book.author.slug), class:'btn btn-success btn-xs' %> 
+                    </div>
+                    <!--<div class="view-story-author  ">
+                        Lượt đọc: <span class="label label-primary">1000</span>
+                    </div>-->
+                    <div class="view-story-number">
+                        <%= book.chapters.size %> chương | <div class="btn btn-danger btn-xs"><%= book.status.name %></div>
+                    </div>
+                </div>
+            <% end %>
+            <p class="link-category pull-left text-right">
+                <%= link_to "Xem thêm", danh_muc_path(@TienHiepbooks.first.subcategory.slug), class:'btn btn-primary' %>
+            </p>
+                </div>
+            </div>
+    
+            <div class="view-home hidden-xs">
+                <h3 class="view-title text-uppercase">
+                    <span><%= link_to @KiemHiepbooks.first.subcategory.name, danh_muc_path(@KiemHiepbooks.first.subcategory.slug) %></span>
+                </h3>
+                <div class="view-content">
+                <% @KiemHiepbooks.each do |book| %>
+                    <div class="view-story">
+                        <div class="view-story-img">
+                            <%= link_to(image_tag(book.image.url, :alt => book.name, :title => book.name, :width => '100%'),truyen_path(book.slug)) %>
+                        </div>
+                        <div class="view-story-title">
+                            <%= link_to book.name, truyen_path(book.slug) %>
+                        </div>
+                        <div class="view-story-author">
+                            <%= link_to book.author.author_name, tac_gia_path(book.author.slug), class:'btn btn-success btn-xs' %> 
+                        </div>
+                        <!--<div class="view-story-author  ">
+                            Lượt đọc: <span class="label label-primary">1000</span>
+                        </div>-->
+                        <div class="view-story-number">
+                            <%= book.chapters.size %> chương | <div class="btn btn-danger btn-xs"><%= book.status.name %></div>
+                        </div>
+                    </div>
+                <% end %>
+                <p class="link-category pull-left text-right">
+                    <%= link_to "Xem thêm", danh_muc_path(@KiemHiepbooks.first.subcategory.slug), class:'btn btn-primary' %>
+                </p>
+            </div>
+        </div>
+    
+            <div class="view-home hidden-xs">
+        <h3 class="view-title text-uppercase">
+            <span><%= link_to @NgonTinhbooks.first.subcategory.name, danh_muc_path(@NgonTinhbooks.first.subcategory.slug) %></span>
+        </h3>
+        <div class="view-content">
+            <% @NgonTinhbooks.each do |book| %>
+                <div class="view-story">
+                    <div class="view-story-img">
+                        <%= link_to(image_tag(book.image.url, :alt => book.name, :title => book.name, :width => '100%'),truyen_path(book.slug)) %>
+                    </div>
+                    <div class="view-story-title">
+                        <%= link_to book.name, truyen_path(book.slug) %>
+                    </div>
+                    <div class="view-story-author">
+                        <%= link_to book.author.author_name, tac_gia_path(book.author.slug), class:'btn btn-success btn-xs' %> 
+                    </div>
+                    <!--<div class="view-story-author  ">
+                        Lượt đọc: <span class="label label-primary">1000</span>
+                    </div>-->
+                    <div class="view-story-number">
+                        <%= book.chapters.size %> chương | <div class="btn btn-danger btn-xs"><%= book.status.name %></div>
+                    </div>
+                </div>
+            <% end %>
+            <p class="link-category pull-left text-right">
+                <%= link_to "Xem thêm", danh_muc_path(@NgonTinhbooks.first.subcategory.slug), class:'btn btn-primary' %>
+            </p>
+        </div>
+            </div>
+    
+            <div class="view-home hidden-xs">
+        <h3 class="view-title text-uppercase">
+            <span><%= link_to @KinhDienbooks.first.subcategory.name, danh_muc_path(@KinhDienbooks.first.subcategory.slug) %></span>
+        </h3>
+        <div class="view-content">
+            <% @KinhDienbooks.each do |book| %>
+                <div class="view-story">
+                    <div class="view-story-img">
+                        <%= link_to(image_tag(book.image.url, :alt => book.name, :title => book.name, :width => '100%'),truyen_path(book.slug)) %>
+                    </div>
+                    <div class="view-story-title">
+                        <%= link_to book.name, truyen_path(book.slug) %>
+                    </div>
+                    <div class="view-story-author">
+                        <%= link_to book.author.author_name, tac_gia_path(book.author.slug), class:'btn btn-success btn-xs' %> 
+                    </div>
+                    <!--<div class="view-story-author  ">
+                        Lượt đọc: <span class="label label-primary">1000</span>
+                    </div>-->
+                    <div class="view-story-number">
+                        <%= book.chapters.size %> chương | <div class="btn btn-danger btn-xs"><%= book.status.name %></div>
+                    </div>
+                </div>
+            <% end %>
+            <p class="link-category pull-left text-right">
+                <%= link_to "Xem thêm", danh_muc_path(@KinhDienbooks.first.subcategory.slug), class:'btn btn-primary' %>
+            </p>
+        </div>
+            </div>
+        </div>
+        <div class="col-sm-4 col-md-3 right-content col-xs-12">
+            <%= render 'partials/notification' %>
+            <%= render 'partials/popularbook', :locals => { :hotBooks => @hotBooks } %>
+            <%= render 'partials/likepage' %>
+        </div>        
+  </div>
+</section>

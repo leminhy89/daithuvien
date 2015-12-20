@@ -1,0 +1,19 @@
+<div class="popular">
+    <h3>Truyện Đang HOT</h3>
+    <ul class="popular-story">     
+        <% @hotBooks.each do |book| %>
+            <li>
+            <div class="popular-thumb">
+                <%= image_tag book.image.url, alt:book.name %>
+            </div>
+            <div class="popular-content">
+              <%= link_to book.name, truyen_path(book.slug), class:'plink' %>
+              <!--<p>1230 Lượt Xem </p>-->
+              <p>Chương: <%= book.chapters.size %></p>
+              <p>Trạng Thái: <%= book.status.name %> </p>
+            </div>              
+          </li>
+        <% end %>
+    </ul>
+    <div id="fb-root"></div>
+</div>

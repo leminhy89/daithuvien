@@ -1,0 +1,66 @@
+<%= render 'partials/menu', :locals => { :categories => @categories, :subcategories => @subcategories} %>
+<section id="content-wrapper">
+      <div class="container">
+        <div class="content-home-wrapper col-sm-8 col-md-9">
+          <div class="main-breadcrumb">
+            <h5><%= link_to "Trang chủ", root_path %> &gt; <%= link_to @book.subcategory.name, danh_muc_path(@book.subcategory.slug) %> &gt; <%= link_to @book.name, truyen_path(@book.slug) %>          
+          </div>
+          
+          <div id="content-home" class="content-inner">            
+           <div class="view-category-item">
+              <div class="pull-left view-category-item-image">
+                  <%= link_to(image_tag(@book.image.url, :alt => @book.name, :title => @book.name, :width => '100%'),truyen_path(@book.slug)) %>
+              </div>
+              <div class="view-category-item-infor ">
+                  <%= link_to raw("<h3 class=\"view-category-item-title\">"+@book.name+"</h3>"), truyen_path(@book.slug) %>
+                  <p class="view-category-item-author">
+                    Tác giả: <%= link_to @book.author.author_name, tac_gia_path(@book.author.slug), class:'btn btn-success btn-xs' %>
+                  </p>     
+                  <p class="view-category-item-category">
+                    Thể Loại: <%= link_to @book.subcategory.name, danh_muc_path(@book.subcategory.slug), class:'btn btn-success btn-xs' %>
+                  </p>              
+                  <p><span class="btn btn-info btn-xs"><%= @book.chapters.size %></span> chương <!-- - Lượt xem: <span class="btn btn-primary btn-xs">1581</span>--></p>      
+                  <p>Trạng Thái: <span class="btn btn-danger btn-sm"><%= @book.status.name %></span></p>                                 
+                  <p class="view-category-item-des hidden-xs">
+                       <%= raw @book.description %>
+                  </p>
+              </div>              
+            </div>
+            <div class="new-chapters-wrapper">
+            <h1>Chương mới nhất của Truyện - <span class="label label-primary"><%= @book.name%></span></h1>
+            <ul class="list-group">
+            <% @book.chapters.order("id DESC").limit(4).each do |chap| %>
+                <li class="list-group-item">
+                    <%= link_to chap.name, chuong_truyen_path(chap.book.slug,chap.slug) %>
+                    <small class="pull-right"><i>Cập nhật: <%= time_ago_in_words(chap.created_at) %></i></small>
+              </li>
+            <% end %>
+            </ul>
+            </div>
+            <div class="all-chapters-list">
+                <h1>Danh Sách Chương Truyện</h1>
+             
+                <ul class="list-group">
+                    <% @chapters.each do |chapter| %>
+                        <li class="list-group-item">
+                            <%= link_to chapter.name, chuong_truyen_path(chapter.book.slug,chapter.slug) %>
+                            <small class="pull-right"><i>Cập nhật: <%= time_ago_in_words(chapter.created_at) %></i></small>
+                        </li>
+                    <% end %>
+                </ul>
+            </div>
+            <div class="col-md-12 text-center">
+                <nav>
+                  <%= will_paginate @chapters, renderer: BootstrapPagination::Rails %>
+                </nav>
+              </div>
+          </div>        
+        </div>
+        
+        <div class="col-sm-4 col-md-3 right-content col-xs-12">
+            <%= render 'partials/notification' %>
+            <%= render 'partials/popularbook' %>
+            <%= render 'partials/likepage' %>
+        </div>
+        </div>
+    </section>

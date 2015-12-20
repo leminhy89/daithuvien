@@ -1,0 +1,28 @@
+<h2> Thêm Mới Tài Khoản</h2>
+
+<%= form_for [:admin, @user] do |f| %>
+    <!-- Check for errors -->
+    <%= render 'partials/errors', obj: @user %>
+    
+    <div class="form-group">
+         <label for="user_name">Tên người dùng: </label>
+        <%= f.text_field :user_name, class:'form-control' %>
+    </div>
+    
+    <div class="form-group">
+        <label for="email">Email: </label>
+        <%= f.text_field :email, class:'form-control' %>
+    </div>
+    
+    <div class="form-group">
+        <label for="password">Mật Khẩu: </label>
+        <%= f.password_field :password, class:'form-control' %>
+    </div>
+    
+    <div class="form-group">
+        <label for="password_confirmation">Xác nhận Mật Khẩu: </label>
+        <%= f.password_field :password_confirmation, class:'form-control' %>
+    </div>
+    <%= f.submit "Đăng Ký", class:'btn btn-primary' %>
+    <%= link_to "Hủy", admin_users_path, class:'btn btn-default' %>
+<% end %>

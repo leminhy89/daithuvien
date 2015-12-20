@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  book_id: 1
+  name: MyString
+  content: MyText
+  created_by: MyString
+  updated_by: MyString
+  delete_flag: false
+
+two:
+  book_id: 1
+  name: MyString
+  content: MyText
+  created_by: MyString
+  updated_by: MyString
+  delete_flag: false

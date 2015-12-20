@@ -1,0 +1,33 @@
+<script>
+  $(function() {
+    $('textarea#eg-textarea').editable({
+      inlineMode: false
+    })
+  });
+</script>
+
+<h2> Cập Nhật Chương Sách - <%= @book.name %></h2>
+
+<%= form_for [:admin, @chapter] do |f| %>
+    <!-- Check for errors -->
+    <%= render 'partials/errors', obj: @chapter %>
+    
+    <div class="form-group">
+        <label for="name">Tên Chương Sách: </label>
+        <%= f.text_field :name, class:'form-control' %>
+    </div>
+    <div class="form-group">
+        <label for="slug">Slug: </label>
+        <%= f.text_field :slug, class:'form-control' %>
+    </div>
+    <div class="form-group">
+        <label for="book_id">Tên Sách: </label>
+        <%= f.select :book_id, Book.where(id: @book.id).where(delete_flag: 0).all.collect {|x| [x.name, x.id]}, {:include_blank => '- Chọn Tên Sách -'}, class:'form-control' %>
+    </div>
+    <div class="form-group">
+        <label for="content">Nội Dung: </label>
+        <%= f.text_area :content, class:'ckeditor' %>
+    </div>
+    <%= f.submit "Cập Nhật", class:'btn btn-primary' %>
+    <%= link_to "Hủy", admin_book_chapters_path, class:'btn btn-default' %>
+<% end %>

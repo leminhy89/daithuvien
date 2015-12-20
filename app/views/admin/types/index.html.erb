@@ -1,0 +1,26 @@
+<%= render 'partials/messages' %>
+<h2 class="page-header">Quản Lý Kiểu <%= link_to "Thêm Mới", new_admin_type_path, class:'btn btn-success pull-right' %></h2>
+<% if @types.exists? %>
+    <table class="table table-stripe">
+        <tr>
+            <th>Tên Kiểu</th>
+            <th>Ngày Tạo</th>
+            <th>Người Tạo</th>
+            <th>Ngày Cập Nhật</th>
+            <th>Người Cập Nhật</th>
+            <th>Action</th>
+        </tr>
+        <% @types.each do |type| %>
+            <tr>
+                <td><%= type.name %></td>
+                <td><%= type.created_at.to_time.strftime('%B %e at %l:%M %p')%></td>
+                <td><%= type.created_by %></td>
+                <td><%= time_ago_in_words(type.updated_at) %> trước</td>
+                <td><%= type.updated_by %></td>
+                <td><%= link_to "Edit", edit_admin_type_path(type), class:'btn btn-primary' %> <%= link_to "Delete", admin_type_path(type), class:'btn btn-danger', method: :delete, data: {confirm: 'Bạn có muốn xóa kiểu này không ?'} %></td>
+            </tr>
+        <% end %>
+    </table>
+<% else %>
+<p> Chưa có kiểu nào được tạo </p>
+<% end %>
